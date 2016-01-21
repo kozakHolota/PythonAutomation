@@ -6,9 +6,11 @@ Created on 10 січ. 2016
 
 from selenium import webdriver
 from engine.WebDriverHelper import WebDriverHelper
+from engine.BaseWebPage import BaseWebPage
 from ui_classes.ApartSearch import ApartSearch
 
-class PageTemplate(object):
+
+class PageTemplate(BaseWebPage):
     '''
     classdocs
     '''
@@ -27,6 +29,7 @@ class PageTemplate(object):
         else:
             self.webdriver = browser_val
         
+        super().__init__(self.webdriver)
         
         if booking_url:
             self.webdriver.get(booking_url)
@@ -34,3 +37,4 @@ class PageTemplate(object):
     def go_to_search_apartaments(self):
         self.webdriver.find_element_by_xpath("//*[@id='frm']")
         return ApartSearch(self.webdriver)
+    

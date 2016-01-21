@@ -26,6 +26,6 @@ class FirstPage(PageTemplate):
         return self.webdriver.find_element_by_xpath('.//*[@id="current_account"][2]/a')
     
     def login(self):
-        self.get_login_button().click()
+        self.click(self.get_login_button())
         return LogIn(self.webdriver)
         

@@ -3,10 +3,10 @@ Created on 12 січ. 2016
 
 @author: chmel
 '''
-from selenium import webdriver
+from engine.BaseWebPage import BaseWebPage
 from ui_classes.ApartDetails import ApartDetails
 
-class ApartSearchResultPage(object):
+class ApartSearchResultPage(BaseWebPage):
     '''
     classdocs
     '''
@@ -20,6 +20,7 @@ class ApartSearchResultPage(object):
         Constructor
         '''
         self.webdriver = webdriver
+        super().__init__(self.webdriver)
         self.get_countries_block()
     
     def get_countries_block(self):
@@ -44,12 +45,13 @@ class ApartSearchResultPage(object):
     
     def verify_item(self, item_value):
         try:
-            item = self.webdriver.find_element_by_xpath("%s//a[text()='%s']" %(self.current_block, item_value))
+            self.webdriver.find_element_by_xpath("%s//a[text()='%s']" %(self.current_block, item_value))
             return True
         except:
             return False
     
     def go_to_hotel(self, hotel_name):
-        self.webdriver.find_element_by_link_text(hotel_name).click()
+        context_menu = "//*[@id='maxotel_table_header']"
+        self.click(self.webdriver.find_element_by_link_text(hotel_name)).wait_for(context_menu, 40)
         return ApartDetails(self.webdriver)
         

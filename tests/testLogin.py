@@ -4,6 +4,7 @@ Created on 10 січ. 2016
 @author: chmel
 '''
 import unittest
+from datetime import date
 from engine.TestSetupTeardown import TestSetupTeardown
 
 class TestLogin(TestSetupTeardown):
@@ -41,8 +42,10 @@ class TestLogin(TestSetupTeardown):
                         self.user_workspace.\
                         go_to_search_apartaments().\
                         enter_country_city_name(self.item).\
-                        select_checkin_day(22).select_checkin_month(3).\
-                        select_checkout_day(30).select_checkout_month(3).\
+                        select_checkin_day(22).\
+                        select_checkin_month(9).\
+                        select_checkout_day(30).\
+                        select_checkout_month(9).\
                         search_appartments().get_hotels_block().\
                         verify_item(self.hotel), 
                         "Hotel %s is not found in the hotels top" %self.hotel)
@@ -53,15 +56,16 @@ class TestLogin(TestSetupTeardown):
         go_to_search_apartaments().\
         enter_country_city_name(self.item).\
         select_checkin_day(22).\
-        select_checkin_month(3).\
+        select_checkin_month(9).\
         select_checkout_day(30).\
-        select_checkout_month(3).\
+        select_checkout_month(9).\
         search_appartments().\
-        get_hotels_block().\
-        go_to_hotel(self.hotel).\
-        get_apartment_details()
+        get_hotels_block()
+        #.\
+        #go_to_hotel(self.hotel).\
+        #get_apartment_details()
         
-        print(selected_hotel["apartment type"])
+        #print(selected_hotel["apartment type"])
     
     @TestSetupTeardown.ui_test
     def testTask4(self):
