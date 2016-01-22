@@ -20,19 +20,22 @@ class LogIn(BaseWebPage):
         self.webdriver = webdriver
         super().__init__(self.webdriver)
     
-    def get_username_field(self):
+    @property
+    def username_field(self):
         return self.webdriver.find_element_by_xpath("//*[@name='username']")
     
-    def get_password_field(self):
+    @property
+    def password_field(self):
         return self.webdriver.find_element_by_xpath("//*[@name='password']")
     
-    def get_send_button(self):
+    @property
+    def send_button(self):
         return self.webdriver.find_element_by_xpath("//form[@target='log_tar']/input[@type='submit']")
     
     def login_as_user(self, username, password):
-        self.enter_text(username, self.get_username_field()).\
-        enter_text(password, self.get_password_field()).\
-        click(self.get_send_button()).\
+        self.enter_text(username, self.username_field).\
+        enter_text(password, self.password_field).\
+        click(self.send_button).\
         wait_for("//ul[@class='profile-area__nav']")
         return UserWorkSpace(self.webdriver, None)
 

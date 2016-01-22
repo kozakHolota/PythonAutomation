@@ -19,9 +19,12 @@ class UserWorkSpace(PageTemplate):
         super().__init__(browser_val, booking_url)
     
     
-    def get_user_firstname(self):
+    @property
+    def user_firstname(self):
         return self.webdriver.find_element_by_xpath('//span[@class="header_name user_firstname"]')
     
-    def get_user_surname(self):
+    @property
+    def user_surname(self):
         return self.webdriver.find_element_by_xpath('//span[@class="header_name user_lastname"]')
+        
         
