@@ -19,13 +19,15 @@ class FirstPage(PageTemplate):
         '''
         super().__init__(browser_val, booking_url)
     
-    def get_register_button(self):
+    @property
+    def register_button(self):
         return self.webdriver.find_element_by_xpath('.//*[@id="current_account"][1]/a')
     
-    def get_login_button(self):
+    @property
+    def login_button(self):
         return self.webdriver.find_element_by_xpath('.//*[@id="current_account"][2]/a')
     
     def login(self):
-        self.click(self.get_login_button())
+        self.click(self.login_button)
         return LogIn(self.webdriver)
         

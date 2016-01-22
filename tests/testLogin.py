@@ -31,8 +31,8 @@ class TestLogin(TestSetupTeardown):
 
     @TestSetupTeardown.ui_test
     def testTask1(self):
-        first_name = self.user_workspace.get_user_firstname().text
-        sur_name = self.user_workspace.get_user_surname().text
+        first_name = self.user_workspace.user_firstname.text
+        sur_name = self.user_workspace.user_surname.text
         self.assertEqual(first_name, self.user_firstname, "Site shows incorrect user first name: %s. Expected: %s" %(first_name, self.user_firstname))
         self.assertEqual(sur_name, self.user_surname, "Site shows incorrect user last name: %s. Expected: %s" %(sur_name, self.user_surname))
     
