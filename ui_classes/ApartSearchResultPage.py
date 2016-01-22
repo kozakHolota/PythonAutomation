@@ -11,7 +11,6 @@ class ApartSearchResultPage(BaseWebPage):
     classdocs
     '''
     
-    webdriver = None
     current_block = None
 
 
@@ -19,8 +18,7 @@ class ApartSearchResultPage(BaseWebPage):
         '''
         Constructor
         '''
-        self.webdriver = webdriver
-        super().__init__(self.webdriver)
+        super().__init__(webdriver)
         self.get_countries_block()
     
     def get_countries_block(self):

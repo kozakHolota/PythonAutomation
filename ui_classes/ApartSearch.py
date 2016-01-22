@@ -11,7 +11,6 @@ class ApartSearch(BaseWebPage):
     '''
     classdocs
     '''
-    webdriver = None
     form_xpath = None
 
 
@@ -19,9 +18,8 @@ class ApartSearch(BaseWebPage):
         '''
         Constructor
         '''
-        self.webdriver = webdriver
         
-        super().__init__(self.webdriver)
+        super().__init__(webdriver)
         
         self.form_xpath = "//*[@id='frm']"
     

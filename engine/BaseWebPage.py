@@ -15,7 +15,7 @@ class BaseWebPage(object):
     classdocs
     '''
     
-    webdriver = None
+    __webdriver = None
 
 
     def __init__(self, webdriver):
@@ -23,7 +23,11 @@ class BaseWebPage(object):
         Constructor
         '''
         
-        self.webdriver = webdriver
+        self.__setattr__("__webdriver", webdriver)
+        
+    @property
+    def webdriver(self):
+        return self.__getattribute__("__webdriver")
     
     #Methods to deal with Web elements
     

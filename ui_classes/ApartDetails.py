@@ -3,21 +3,19 @@ Created on 13 січ. 2016
 
 @author: chmel
 '''
-from selenium import webdriver
+from engine.BaseWebPage import BaseWebPage
 
-class ApartDetails(object):
+class ApartDetails(BaseWebPage):
     '''
     classdocs
     '''
-    
-    webdriver = None
 
 
     def __init__(self, webdriver):
         '''
         Constructor
         '''
-        self.webdriver = webdriver
+        super().__init__(webdriver)
     
     def get_apartment_details(self):
         apart_dict = {"apartment type": [], "price": [], "cases": [],"booking": [] }

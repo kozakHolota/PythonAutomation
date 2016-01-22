@@ -14,7 +14,6 @@ class PageTemplate(BaseWebPage):
     '''
     classdocs
     '''
-    webdriver = None
     browser_val = None
 
 
@@ -22,14 +21,14 @@ class PageTemplate(BaseWebPage):
         '''
         Constructor
         '''
+        driver = None
         if isinstance(browser_val, str):
-            self.webdriver = WebDriverHelper.return_webdriver(browser_val)
+            driver = WebDriverHelper.return_webdriver(browser_val)
+            super().__init__(driver)
             self.browser_val = browser_val
             self.webdriver.maximize_window()
         else:
-            self.webdriver = browser_val
-        
-        super().__init__(self.webdriver)
+            super().__init__(browser_val)
         
         if booking_url:
             self.webdriver.get(booking_url)
